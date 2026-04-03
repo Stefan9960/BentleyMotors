@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "menu_cars",
+  "info": {
+    "singularName": "menu-car",
+    "pluralName": "menu-cars",
+    "displayName": "menu-cars"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "gasoline": {
+      "type": "string"
+    },
+    "about_cars": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::about-car.about-car"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}

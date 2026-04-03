@@ -1,0 +1,131 @@
+.swiper-wrapper
+{
+    height: 100%;
+}
+.swiper {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+}
+
+.swiper-slide {
+    text-align: center;
+  /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Base image style */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.custom-fraction {
+    position: absolute;
+    top: 1.5px;
+    right: 30px;
+    padding-left:12px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    z-index:69;
+}
+
+.zoom-in {
+    transform: scale(1.05);
+    transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+.zoom-out {
+    transform: scale(0.95);
+    transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+.fade-slide {
+    transition: transform 0.7s ease, opacity 0.7s ease;
+}
+.scroll-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    background: white;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.05s linear;
+}
+
+
+                @media (max-width: 767px) {
+                    .mySwiper,
+                    .mySwiper .swiper-wrapper { height: auto !important; }
+                    .mySwiper .swiper-slide {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        height: auto !important;
+                    }
+                }
+
+                @media (min-width: 768px) {
+                    .swiper-outer-wrapper {
+                        flex: 1;
+                        min-height: 0;
+                        overflow: hidden;
+                        position: relative;
+                    }
+                    .mySwiper { height: 100% !important; }
+                    .mySwiper .swiper-wrapper { height: 100% !important; }
+                    .mySwiper .swiper-slide { height: 100% !important; }
+                }
+
+                /* Slide transition animations */
+.swiper-slide {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.swiper-slide-prev {
+  transform: scale(0.85);
+  opacity: 0.7;
+}
+
+.swiper-slide-next {
+  transform: scale(0.85);
+  opacity: 0.7;
+}
+
+.swiper-slide-active {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* For large screens, adjust the scaling */
+@media (min-width: 1024px) {
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+/* For mobile screens */
+@media (max-width: 767px) {
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+}
+
+/* For smoother transitions on videos and images */
+.swiper-slide video,
+.swiper-slide img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}

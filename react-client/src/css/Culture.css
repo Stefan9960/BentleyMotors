@@ -1,0 +1,946 @@
+/* ========== BASE CULTURE PAGE STYLES ========== */
+.culture-background {
+    background: linear-gradient(to top, #183319 0%, #183319 15%, #122813 25%, #000000 45%, #000000 100%);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .HeritageSwiper {
+        padding-left: 30px;
+        padding-right: 30px;
+        height: auto !important;
+        aspect-ratio: 17 / 7;
+        margin-bottom: 10px;
+    }
+
+    .HeritageSwiper .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        height: 100% !important;
+    }
+
+    .HeritageSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.39) 1%,
+            rgba(0, 0, 0, 0) 11.5%) !important;
+    }
+}
+
+/* New breakpoint for screens from 1024px to 1439px */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .HeritageSwiper {
+        padding-left: 40px;
+        padding-right: 40px;
+        height: auto !important;
+        aspect-ratio: 17 / 7;
+        margin-bottom: 10px;
+    }
+
+    .HeritageSwiper .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        height: 100% !important;
+    }
+
+    .HeritageSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.39) 1%,
+            rgba(0, 0, 0, 0) 11.5%) !important;
+    }
+}
+
+
+
+/* Heritage Slider Only - Large Screens */
+@media (min-width: 1440px) {
+    .HeritageSwiper {
+        height: auto !important;
+        aspect-ratio: 22 / 7; /* The 'window' shape */
+        overflow: visible;
+        padding-left:48px;
+        padding-right:48px;
+        position: relative;
+    }
+
+    @keyframes heritageSlideInRight {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes heritageSlideInLeft {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* If you are using an <img> tag inside the slide */
+    .HeritageSwiper .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        
+        /* This is the magic for 'cropping from both sides' */
+        object-fit: cover !important; 
+        
+        /* 'center' ensures it crops equally from left, right, top, and bottom */
+        object-position: center center !important; 
+    }
+
+    /* If you are sticking with CSS Background Images instead */
+    .HeritageSwiper .swiper-slide {
+        background-size: cover !important;
+        background-position: center center !important;
+        height: 100% !important;
+    }
+    .HeritageSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.39) 1%,
+            rgba(0, 0, 0, 0) 11.5%) !important;
+    }
+}
+/* ========== HERITAGE SWIPER ========== */
+.HeritageSwiper {
+    height: 620px;
+    width: 100%;
+    position: relative;
+    margin-top: 0px;
+    overflow: visible;
+}
+
+.HeritageSwiper .swiper-wrapper {
+    align-items: center;
+}
+
+.HeritageSwiper .swiper-slide {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 520px;
+    height: 90%;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.HeritageSwiper .swiper-slide:not(.swiper-slide-active) {
+    opacity: 1 !important;
+    filter: brightness(1) !important;
+    -webkit-filter: brightness(1) !important;
+}
+
+.HeritageSwiper .swiper-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.3) 0%, 
+        rgba(0, 0, 0, 0) 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heritage-slide-1 {
+    background-image: url('/images/HeritageSlide1.jpg');
+    cursor: pointer;
+}
+
+.heritage-slide-2 {
+    background-image: url('/images/HeritageSlide2.jpg');
+    cursor: pointer;
+}
+
+.heritage-slide-3 {
+    background-image: url('/images/HeritageSlide3.jpg');
+    cursor: pointer;
+}
+
+.heritage-slide-4 {
+    background-image: url('/images/HeritageSlide4.jpg');
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .HeritageSwiper {
+        padding-left: 17px;
+        padding-right: 17px;
+        margin-top: 85px;
+        height: auto;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        margin-bottom: 10px;
+    }
+
+    .HeritageSwiper .swiper-slide {
+        background-position: top bottom;
+        background-size: cover;
+    }
+
+    .HeritageSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom, 
+            rgba(0, 0, 0, 0.39) 1%, 
+            rgba(0, 0, 0, 0) 11.5%);
+    }
+}
+
+@media (max-width: 480px) {
+    .HeritageSwiper {
+        aspect-ratio: 3 / 4;
+        margin-bottom: 5px;
+    }
+
+    .HeritageSwiper .swiper-slide {
+        background-position: center 80%;
+    }
+
+    .HeritageSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom, 
+            rgba(0, 0, 0, 0.35) 1%, 
+            rgba(0, 0, 0, 0) 25%);
+    }
+}
+
+/* ========== HERITAGE ARROWS ========== */
+.heritage-arrow {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heritage-arrow:hover {
+    opacity: 0.7 !important;
+}
+
+/* ========== PRODUCTS SWIPER ========== */
+.ProductsSwiper {
+    height: 620px;
+    width: 100%;
+    position: relative;
+    margin-top: 0px;
+    overflow: visible;
+}
+
+.ProductsSwiper .swiper-wrapper {
+    align-items: center;
+}
+
+.ProductsSwiper .swiper-slide {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 520px;
+    height: 90%;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.ProductsSwiper .swiper-slide:not(.swiper-slide-active) {
+    opacity: 1 !important;
+    filter: brightness(1) !important;
+    -webkit-filter: brightness(1) !important;
+}
+
+.ProductsSwiper .swiper-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.3) 0%, 
+        rgba(0, 0, 0, 0) 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.products-slide-1 {
+    background-image: url('/images/ProductSlide1.jpg');
+    cursor: pointer;
+}
+
+.products-slide-2 {
+    background-image: url('/images/ProductSlide2.jpg');
+    cursor: pointer;
+}
+
+.products-slide-3 {
+    background-image: url('/images/ProductSlide3.jpg');
+    cursor: pointer;
+}
+
+.products-slide-4 {
+    background-image: url('/images/ProductSlide4.jpg');
+    cursor: pointer;
+}
+
+/* Medium screens (768px - 1023px) - Match HeritageSwiper exactly */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .ProductsSwiper {
+        padding-left: 30px;
+        padding-right: 30px;
+        height: auto !important;
+        aspect-ratio: 17 / 7;
+        margin-bottom: 10px;
+        margin-top: 120px;
+    }
+    
+    .ProductsSwiper .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        height: 100% !important;
+        width: auto; /* Let Swiper control the width */
+    }
+    
+    .ProductsSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.39) 1%,
+            rgba(0, 0, 0, 0) 11.5%) !important;
+    }
+}
+
+/* Large screens (1024px - 1438px) - Match HeritageSwiper exactly */
+@media (min-width: 1024px) and (max-width: 1438px) {
+    .ProductsSwiper {
+        padding-left: 40px;
+        padding-right: 40px;
+        height: auto !important;
+        aspect-ratio: 17 / 7;
+        margin-bottom: 10px;
+        margin-top: 120px;
+    }
+    
+    .ProductsSwiper .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        height: 100% !important;
+        width: auto; /* Let Swiper control the width */
+    }
+    
+    .ProductsSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.39) 1%,
+            rgba(0, 0, 0, 0) 11.5%) !important;
+    }
+}
+
+/* Extra large screens (1439px and above) - Match HeritageSwiper exactly */
+@media (min-width: 1439px) {
+    .ProductsSwiper {
+        height: auto !important;
+        aspect-ratio: 22 / 7; /* Same as HeritageSwiper */
+        overflow: visible;
+        padding-left: 48px;
+        padding-right: 48px;
+        position: relative;
+        margin-top: 120px;
+    }
+    
+    .ProductsSwiper .swiper-slide {
+        background-size: cover !important;
+        background-position: center center !important;
+        height: 100% !important;
+        width: auto; /* Let Swiper control the width */
+    }
+    
+    .ProductsSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.39) 1%,
+            rgba(0, 0, 0, 0) 11.5%) !important;
+    }
+
+    .ProductsSwiper .relative.px-4.md\:px-8 {
+        padding-right: calc(4rem + 25%) !important; /* Extra space as if there's a 4th slide */
+    }
+}
+
+/* Mobile (< 768px) - Match HeritageSwiper exactly */
+@media (max-width: 767px) {
+    .ProductsSwiper {
+        padding-left: 17px;
+        padding-right: 17px;
+        margin-top: 85px;
+        height: auto;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        margin-bottom: 10px;
+    }
+
+    .ProductsSwiper .swiper-slide {
+        background-position: top bottom;
+        background-size: cover;
+    }
+
+    .ProductsSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom, 
+            rgba(0, 0, 0, 0.39) 1%, 
+            rgba(0, 0, 0, 0) 11.5%);
+    }
+}
+
+/* Small mobile (< 480px) - Match HeritageSwiper exactly */
+@media (max-width: 480px) {
+    .ProductsSwiper {
+        aspect-ratio: 3 / 4;
+        margin-bottom: 5px;
+    }
+
+    .ProductsSwiper .swiper-slide {
+        background-position: center 80%;
+    }
+
+    .ProductsSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom, 
+            rgba(0, 0, 0, 0.35) 1%, 
+            rgba(0, 0, 0, 0) 25%);
+    }
+}
+
+/* ========== DESIGN SWIPER ANIMATIONS ========== */
+@keyframes designSlideInRight {
+    from { 
+        opacity: 0; 
+        transform: translateX(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+@keyframes designSlideInLeft {
+    from { 
+        opacity: 0; 
+        transform: translateX(-20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+/* Design arrow styles */
+.design-arrow {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.design-arrow:hover:not(:disabled) {
+    opacity: 0.7 !important;
+}
+
+.design-arrow:disabled {
+    cursor: not-allowed;
+}
+
+/* Ensure expanded panel has proper z-index */
+.design-expanded-panel {
+    z-index: 15;
+    pointer-events: auto;
+}
+
+/* ========== DESIGN SWIPER ========== */
+.DesignSwiper {
+    height: 620px;
+    width: 100%;
+    position: relative;
+}
+
+.DesignSwiper .swiper-slide {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 520px;
+    height: 90%;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: scale(1) !important;
+}
+
+.DesignSwiper .swiper-slide:not(.swiper-slide-active) {
+    opacity: 1 !important;
+    filter: brightness(1) !important;
+    -webkit-filter: brightness(1) !important;
+}
+
+.DesignSwiper .swiper-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.5) 0%, 
+        rgba(0, 0, 0, 0.35) 25%,
+        rgba(0, 0, 0, 0.15) 50%,
+        rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.design-slide-1 {
+    background-image: url('/images/DesignSlide1.jpg');
+    cursor: pointer;
+}
+
+.design-slide-2 {
+    background-image: url('/images/DesignSlide2.jpg');
+    cursor: pointer;
+}
+
+.design-slide-3 {
+    background-image: url('/images/DesignSlide3.jpg');
+    cursor: pointer;
+}
+
+.design-slide-4 {
+    background-image: url('/images/DesignSlide4.jpg');
+    cursor: pointer;
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .DesignSwiper {
+        padding-left: 30px;
+        padding-right: 30px;
+        height: auto !important;
+        aspect-ratio: 17 / 7;
+        margin-bottom: 10px;
+    }
+
+    .DesignSwiper .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        height: 100% !important;
+    }
+
+    .DesignSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.39) 1%,
+            rgba(0, 0, 0, 0) 11.5%) !important;
+    }
+}
+
+/* New breakpoint for screens from 1024px to 1439px */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .DesignSwiper {
+        padding-left: 40px;
+        padding-right: 40px;
+        height: auto !important;
+        aspect-ratio: 17 / 7;
+        margin-bottom: 10px;
+    }
+
+    .DesignSwiper .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        height: 100% !important;
+    }
+
+    .DesignSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.39) 1%,
+            rgba(0, 0, 0, 0) 11.5%) !important;
+    }
+}
+
+
+
+/* Heritage Slider Only - Large Screens */
+@media (min-width: 1440px) {
+    .DesignSwiper {
+        height: auto !important;
+        aspect-ratio: 22 / 7; /* The 'window' shape */
+        overflow: visible;
+        padding-left:48px;
+        padding-right:48px;
+        position: relative;
+    }
+
+    @keyframes DesignSlideInRight {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes DesignSlideInLeft {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* If you are using an <img> tag inside the slide */
+    .DesignSwiper .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        
+        /* This is the magic for 'cropping from both sides' */
+        object-fit: cover !important; 
+        
+        /* 'center' ensures it crops equally from left, right, top, and bottom */
+        object-position: center center !important; 
+    }
+
+    /* If you are sticking with CSS Background Images instead */
+    .DesignSwiper .swiper-slide {
+        background-size: cover !important;
+        background-position: center center !important;
+        height: 100% !important;
+    }
+    .DesignSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.39) 1%,
+            rgba(0, 0, 0, 0) 11.5%) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .DesignSwiper {
+        padding-left: 17px;
+        padding-right: 17px;
+        margin-top: 85px;
+        height: auto;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        margin-bottom: 10px;
+    }
+
+    .DesignSwiper .swiper-slide {
+        background-position: top bottom;
+        background-size: cover;
+    }
+
+    .DesignSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom, 
+            rgba(0, 0, 0, 0.55) 1%, 
+            rgba(0, 0, 0, 0.4) 20%,
+            rgba(0, 0, 0, 0.2) 40%,
+            rgba(0, 0, 0, 0) 60%);
+    }
+}
+
+@media (max-width: 480px) {
+    .DesignSwiper {
+        aspect-ratio: 3 / 4;
+        margin-bottom: 5px;
+    }
+
+    .DesignSwiper .swiper-slide {
+        background-position: center 80%;
+    }
+
+    .DesignSwiper .swiper-slide::before {
+        background: linear-gradient(to bottom, 
+            rgba(0, 0, 0, 0.6) 1%, 
+            rgba(0, 0, 0, 0.45) 25%,
+            rgba(0, 0, 0, 0.25) 50%,
+            rgba(0, 0, 0, 0) 70%);
+    }
+}
+
+/* ========== STICKY NAVIGATION MENU ========== */
+.sticky-nav {
+    position: relative;
+    background: transparent;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.sticky-nav.sticky-active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    backdrop-filter: none;
+    padding: 16px 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.3s ease;
+    z-index: 1000;
+    overflow-x: hidden;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.sticky-nav-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 0 24px;
+    scrollbar-width: none;
+    box-sizing: border-box;
+}
+
+.sticky-nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.sticky-nav-item {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+}
+
+.sticky-nav-item.active {
+    color: white;
+}
+
+/* ========== STICKY NAV MOBILE (up to 669px) ========== */
+@media (max-width: 669px) {
+    .sticky-nav {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 12px 0;
+        overflow-x: hidden;
+    }
+
+    .sticky-nav-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 20px;
+        margin: 0;
+        gap: 22px;
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+
+    .sticky-nav-item {
+        padding: 12px 20px;
+        font-size: 12px;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        flex-shrink: 0;
+    }
+
+    .sticky-nav-item:first-child {
+        margin-left: max(0px, calc(50% - 210px));
+    }
+
+    .sticky-nav-item:last-child {
+        margin-right: 20px;
+    }
+
+    .sticky-nav-item:nth-child(4),
+    .sticky-nav-item:nth-child(5) {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+}
+
+/* ========== FROZEN POSITION (670px to 699px) ========== */
+@media (min-width: 670px) and (max-width: 699px) {
+    .sticky-nav {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 12px 0;
+        overflow-x: hidden;
+    }
+
+    .sticky-nav-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 20px;
+        margin: 0;
+        gap: 22px;
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+
+    .sticky-nav-item {
+        padding: 12px 20px;
+        font-size: 12px;
+        flex-shrink: 0;
+    }
+
+    .sticky-nav-item:first-child {
+        margin-left: max(0px, calc(50% - 210px));
+    }
+
+    .sticky-nav-item:last-child {
+        margin-right: 20px;
+    }
+
+    .sticky-nav-item:nth-child(4),
+    .sticky-nav-item:nth-child(5) {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+}
+
+/* ========== ALL ITEMS VISIBLE — FIXED SHIFT RIGHT (700px to 767px) ========== */
+@media (min-width: 700px) and (max-width: 767px) {
+    .sticky-nav {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 12px 0;
+        overflow-x: hidden;
+    }
+
+    .sticky-nav-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 20px;
+        margin: 0;
+        gap: 22px;
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+
+    .sticky-nav-item {
+        padding: 12px 20px;
+        font-size: 12px;
+        flex-shrink: 0;
+    }
+
+    .sticky-nav-item:first-child {
+        margin-left: 80px;
+    }
+
+    .sticky-nav-item:last-child {
+        margin-right: 20px;
+    }
+
+    .sticky-nav-item:nth-child(4),
+    .sticky-nav-item:nth-child(5) {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+}
+
+/* ========== DESKTOP (768px and above) ========== */
+@media (min-width: 768px) {
+    .sticky-nav {
+        justify-content: center;
+    }
+
+    .sticky-nav-container {
+        justify-content: center;
+        gap: 22px;
+        overflow-x: visible;
+        width: auto;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .sticky-nav-item {
+        padding: 12px 20px;
+        font-size: 13.5px;
+        flex-shrink: 0;
+    }
+
+    .sticky-nav-item:first-child {
+        margin-left: 0;
+    }
+
+    .sticky-nav-item:last-child {
+        margin-right: 0;
+    }
+}
+
+/* ========== STICKY NAV HOVER & ACTIVE EFFECTS ========== */
+.sticky-nav-item:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    border-radius: 1px;
+}
+
+.sticky-nav:not(.sticky-active) .sticky-nav-item:hover::after {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.sticky-nav:not(.sticky-active) .sticky-nav-item:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sticky-nav.sticky-active .sticky-nav-item:hover::after {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.sticky-nav.sticky-active .sticky-nav-item:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.sticky-nav.sticky-active .sticky-nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: black;
+    border-radius: 1px;
+}
+
+.sticky-nav:not(.sticky-active) .sticky-nav-item.active::after {
+    display: none;
+}
+
+.sticky-nav:not(.sticky-active) .sticky-nav-item {
+    color: white;
+}
+
+.sticky-nav.sticky-active .sticky-nav-item {
+    color: black;
+}
+
+.sticky-nav.sticky-active .sticky-nav-item.active {
+    color: black;
+    font-weight: 500;
+}
+
+/* ========== ENSURE NO HORIZONTAL SCROLL ========== */
+.culture-background,
+.sticky-nav,
+.sticky-nav.sticky-active {
+    overflow-x: hidden !important;
+    max-width: 100vw;
+}

@@ -1,0 +1,238 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+html,body
+{
+    overflow-x:hidden;
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;   
+    z-index: 5;  
+}
+
+/* Custom scrollbar styles */
+.custom-scrollbar {
+    scrollbar-width: thick; /* Changed from thin to thick for Firefox */
+    scrollbar-color: #888 #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 16px; /* Increased from 12px to 16px for thicker scrollbar */
+    height: 16px; /* For horizontal scrollbar if needed */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    margin-block: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Custom scrollbar for right side */
+.custom-scrollbar-medium::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar-medium::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-scrollbar-medium::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0;
+    border: none;
+}
+
+.custom-scrollbar-medium::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* For Firefox */
+.custom-scrollbar-medium {
+    scrollbar-width: thin;
+    scrollbar-color: #888 transparent;
+}
+
+/* Remove any direction: rtl that would move scrollbar to left */
+.custom-scrollbar-medium {
+    direction: ltr; /* Ensures scrollbar stays on right */
+}
+
+@keyframes fadeFromTop {
+    from {
+    opacity: 0;
+    transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+        }
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeFromTop {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideFromLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFromRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Custom scrollbar for medium screen �── */
+.custom-medium::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+/* Hide all scrollbar buttons/arrows */
+.custom-medium::-webkit-scrollbar-button {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+    background: transparent !important;
+    opacity: 0 !important;
+    scrollbar-arrow-color: transparent;
+}
+
+/* Hide scrollbar corner (if any) */
+.custom-medium::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.custom-medium::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-medium::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0;
+}
+
+.custom-medium::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Firefox - remove arrows completely */
+.custom-medium {
+    scrollbar-width: thin;
+    scrollbar-color: #888 transparent;
+}
+
+/* For Firefox to remove arrows specifically */
+@-moz-document url-prefix() {
+    .custom-medium {
+        scrollbar-width: thin;
+    }
+}
+
+/* Screens up to 1348px */
+@media (max-width: 1348px) {
+    .show-upto-1348 {
+        display: block !important;
+    }
+    .hide-above-1348 {
+        display: none !important;
+    }
+}
+
+/* Screens above 1348px */
+@media (min-width: 1349px) {
+    .show-above-1348 {
+        display: block !important;
+    }
+    .hide-upto-1348 {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Hide horizontal overflow */
+    .custom-medium {
+        overflow-x: hidden !important;
+    }
+    
+    /* Hide scrollbar arrows/buttons completely */
+    .custom-medium::-webkit-scrollbar-button {
+        display: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        background: transparent !important;
+        opacity: 0 !important;
+        -webkit-appearance: none !important;
+    }
+    
+    /* Make track transparent */
+    .custom-medium::-webkit-scrollbar-track {
+        background: transparent !important;
+    }
+    
+    /* Style the thumb */
+    .custom-medium::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 0;
+    }
+    
+    .custom-medium::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    /* Hide scrollbar corner if present */
+    .custom-medium::-webkit-scrollbar-corner {
+        background: transparent !important;
+    }
+    
+    /* For Firefox - hide arrows and set colors */
+    .custom-medium {
+        scrollbar-width: thin;
+        scrollbar-color: #888 transparent !important;
+        overflow-x: hidden !important;
+    }
+}

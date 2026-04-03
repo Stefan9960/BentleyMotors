@@ -1,0 +1,503 @@
+/* ─────────────────────────────────────────
+   GLOBAL RESET & OVERFLOW CONTROL
+   ───────────────────────────────────────── */
+
+/* Prevent horizontal scroll at root level */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Universal box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Ensure all images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─────────────────────────────────────────
+   SPACING VARIABLES
+   ───────────────────────────────────────── */
+:root {
+    --pad-xs: 17px;
+    --pad-sm: 25px;
+    --pad-md: 32px;
+    --pad-lg: 48px;
+    --pad-xl: 48px;
+    --pad-2xl: 64px;
+    --pad-3xl: 100px;
+}
+
+/* ─────────────────────────────────────────
+   MAIN SWIPER CONTAINER
+   ───────────────────────────────────────── */
+
+/* Outer wrapper - prevents horizontal scroll */
+.swiper-overflow-wrapper {
+    width: 100%;
+    position: relative;
+    overflow-x: clip;
+    overflow-y: visible;
+}
+
+/* Main swiper container */
+.mainSwiper {
+    margin-top: 35px;
+    padding-left: var(--pad-xs);
+    padding-right: var(--pad-xs);
+    height: 507px;
+    width: 100%;
+    overflow: visible !important;
+}
+
+/* Tablet - proper side padding */
+@media (min-width: 768px) {
+    .mainSwiper {
+        padding-left: var(--pad-md);
+        padding-right: var(--pad-md);
+        height: 220px;
+    }
+}
+
+/* Small Desktop - proper side padding */
+@media (min-width: 1024px) {
+    .mainSwiper {
+        padding-left: var(--pad-lg);
+        padding-right: var(--pad-lg);
+        height: 442px;
+        margin-top: 30px;
+    }
+}
+
+/* Medium Desktop - proper side padding */
+@media (min-width: 1280px) {
+    .mainSwiper {
+        padding-left: var(--pad-xl);
+        padding-right: var(--pad-xl);
+    }
+}
+
+/* Large Desktop - proper side padding */
+@media (min-width: 1440px) {
+    .mainSwiper {
+        padding-left: var(--pad-2xl);
+        padding-right: var(--pad-2xl);
+    }
+}
+
+/* Extra Large Desktop - proper side padding */
+@media (min-width: 1600px) {
+    .mainSwiper {
+        padding-left: var(--pad-3xl);
+        padding-right: var(--pad-3xl);
+        height: 520px;
+    }
+}
+
+/* Ultra Wide Screens */
+@media (min-width: 1920px) {
+    .mainSwiper {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+}
+
+/* Swiper wrapper - needs overflow visible for animations */
+.mainSwiper .swiper-wrapper {
+    overflow: visible !important;
+    display: flex;
+    will-change: transform;
+}
+
+/* Individual slides */
+.mainSwiper .swiper-slide {
+    overflow: visible;
+    height: auto;
+    transition: all 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Slide image wrapper */
+.mainSwiper .slide-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: all 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+    will-change: transform, height, min-height;
+}
+
+/* Active expanded slide - allow to overflow */
+.mainSwiper .slide-img-wrapper[style*="z-index: 10"] {
+    overflow: visible;
+    z-index: 10;
+}
+
+/* Slide with expanded content */
+.mainSwiper .swiper-slide:has(.slide-img-wrapper[style*="z-index: 10"]) {
+    overflow: visible;
+    z-index: 20;
+}
+
+/* ─────────────────────────────────────────
+   GRADIENT OVERLAYS
+   ───────────────────────────────────────── */
+
+/* Top gradient */
+.mainSwiper .slide-img-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Bottom gradient */
+.mainSwiper .slide-img-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE GRADIENT HEIGHTS
+   ───────────────────────────────────────── */
+
+@media (min-width: 768px) {
+    .mainSwiper .slide-img-wrapper::before {
+        height: 100px;
+    }
+    
+    .mainSwiper .slide-img-wrapper::after {
+        height: 140px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mainSwiper .slide-img-wrapper::before {
+        height: 120px;
+    }
+    
+    .mainSwiper .slide-img-wrapper::after {
+        height: 180px;
+    }
+}
+
+@media (min-width: 1249px) {
+    .mainSwiper .slide-img-wrapper::before {
+        height: 140px;
+    }
+    
+    .mainSwiper .slide-img-wrapper::after {
+        height: 200px;
+    }
+}
+
+/* ─────────────────────────────────────────
+   CONTENT PANEL (EXPANDED SLIDE)
+   ───────────────────────────────────────── */
+
+/* Panel animations */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Expanded content panel */
+.expanded-content-panel {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 90%;
+}
+
+/* Ensure content panel doesn't cause overflow */
+.hidden.lg\:block.absolute {
+    max-width: 600px;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for panel */
+.expanded-content-panel::-webkit-scrollbar {
+    width: 4px;
+}
+
+.expanded-content-panel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.expanded-content-panel::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+/* ─────────────────────────────────────────
+   PROGRESS BAR
+   ───────────────────────────────────────── */
+
+.progress-bar-container {
+    width: 100%;
+    max-width: 200px;
+    height: 2px;
+    background-color: #e5e7eb;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #000000;
+    position: absolute;
+    transition: left 0.05s ease, right 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Moving state - faster transition */
+.progress-bar-fill.moving {
+    transition: left 0.02s ease, right 0.02s ease;
+}
+
+/* ─────────────────────────────────────────
+   NAVIGATION BUTTONS
+   ───────────────────────────────────────── */
+
+.nav-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-button:hover:not(:disabled) {
+    background-color: #f3f4f6;
+}
+
+.nav-button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* ─────────────────────────────────────────
+   MOBILE SPECIFIC FIXES
+   ───────────────────────────────────────── */
+
+@media (max-width: 767px) {
+    .mainSwiper {
+        padding-left: 17px;
+        padding-right: 17px;
+        overflow: visible !important;
+        margin-top: 20px;
+    }
+    
+    .mainSwiper .swiper-slide {
+        overflow: visible;
+    }
+    
+    /* Adjust gradients for mobile */
+    .mainSwiper .slide-img-wrapper::before {
+        height: 60px;
+    }
+    
+    .mainSwiper .slide-img-wrapper::after {
+        height: 120px;
+    }
+    
+    /* Progress bar on mobile */
+    .progress-bar-container {
+        max-width: 100%;
+        flex: 1;
+    }
+}
+
+/* ─────────────────────────────────────────
+   TABLET SPECIFIC
+   ───────────────────────────────────────── */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .mainSwiper {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+    
+    .progress-bar-container {
+        max-width: 200px;
+    }
+}
+
+/* ─────────────────────────────────────────
+   DESKTOP SPECIFIC
+   ───────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+    /* Disable hover effects on touch devices */
+    @media (hover: hover) {
+        .nav-button:hover:not(:disabled) {
+            background-color: #f3f4f6;
+        }
+    }
+    
+    /* Ensure expanded panel doesn't cause overflow */
+    .expanded-content-panel {
+        max-height: calc(100% - 40px);
+    }
+}
+
+/* ─────────────────────────────────────────
+   UTILITY CLASSES
+   ───────────────────────────────────────── */
+
+/* Prevent horizontal scroll on any element */
+.no-horizontal-scroll {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Clip overflow without affecting layout */
+.overflow-clip {
+    overflow-x: clip;
+}
+
+/* Ensure absolute positioned elements don't cause overflow */
+.position-absolute-safe {
+    max-width: 100%;
+    overflow: visible;
+}
+
+/* For elements that need to overflow but not cause scroll */
+.overflow-visible-safe {
+    overflow: visible;
+    position: relative;
+}
+
+/* ─────────────────────────────────────────
+   FIX FOR ANY LEFTOVER OVERFLOW ISSUES
+   ───────────────────────────────────────── */
+
+/* Catch any rogue elements that might cause overflow */
+body * {
+    max-width: 100vw;
+}
+
+/* But allow swiper slides to expand beyond container */
+.swiper-slide {
+    max-width: none !important;
+}
+
+/* Ensure the swiper container itself doesn't overflow */
+.swiper {
+    overflow: visible !important;
+    width: 100%;
+}
+
+/* Fix for any transform that might cause overflow */
+[style*="transform"] {
+    will-change: transform;
+}
+
+/* Ensure images don't overflow their containers */
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Animation for close button */
+.close-button {
+    transition: all 0.2s ease;
+}
+
+.close-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.05);
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, .nav-button, .close-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus styles for accessibility */
+button:focus-visible, 
+.nav-button:focus-visible,
+.close-button:focus-visible {
+    outline: 2px solid #394D45;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .progress-bar-fill {
+        background-color: #000000;
+    }
+    
+    .nav-button:hover:not(:disabled) {
+        background-color: #e5e7eb;
+        outline: 1px solid #000;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .mainSwiper .slide-img-wrapper,
+    .mainSwiper .swiper-slide {
+        transition: none !important;
+    }
+}
